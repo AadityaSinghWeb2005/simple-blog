@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Blog</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Simple Blog</h1>
+    <a href="/posts/new" class="button">New Post</a>
+    <hr>
+    <% if (posts.length > 0) { %>
+      <ul class="post-list">
+        <% posts.forEach(post => { %>
+          <li class="post-item">
+            <a href="/posts/<%= post._id %>"><%= post.title %></a>
+            <div class="post-actions">
+              <a href="/posts/<%= post._id %>/edit" class="button button-edit">Edit</a>
+              <form action="/posts/<%= post._id %>?_method=DELETE" method="POST" class="delete-form">
+                <button type="submit" class="button button-delete">Delete</button>
+              </form>
+            </div>
+          </li>
+        <% }); %>
+      </ul>
+    <% } else { %>
+      <p>No posts yet. Create one!</p>
+    <% } %>
+  </div>
+</body>
+</html>

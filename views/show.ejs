@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= post.title %> - Simple Blog</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="post-detail">
+      <h1><%= post.title %></h1>
+      <p class="post-date">Posted on: <%= post.createdAt.toLocaleDateString() %></p>
+      <div class="post-content">
+        <p><%= post.content %></p>
+      </div>
+      <div class="post-actions">
+        <a href="/posts/<%= post._id %>/edit" class="button button-edit">Edit</a>
+        <form action="/posts/<%= post._id %>?_method=DELETE" method="POST" class="delete-form">
+          <button type="submit" class="button button-delete">Delete</button>
+        </form>
+        <a href="/" class="button button-secondary">Back to Home</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
